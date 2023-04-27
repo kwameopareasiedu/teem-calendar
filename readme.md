@@ -13,3 +13,8 @@ Build a prototype scheduling/booking software for a business
 3. `cd` into project root and run `yarn` to install dependencies
 4. Run `yarn dev` to start development server
 5. Access app at http://localhost:8000
+
+## Playground
+
+The final app is available at https://kwameopareasiedu.github.io/teem-calendar/.
+Enjoy!
