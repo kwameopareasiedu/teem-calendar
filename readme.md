@@ -1,4 +1,4 @@
-# Teem Interview Assessment
+# Teem Calendar
 
 Candidate: **Kwame Opare Asiedu**
 
