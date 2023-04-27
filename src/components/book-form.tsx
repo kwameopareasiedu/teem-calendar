@@ -1,13 +1,16 @@
 import Location from "../models/location.ts";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { timeRange } from "../models/booking.ts";
+import Booking, { prefixTime, timeRange } from "../models/booking.ts";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as dayjs from "dayjs";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+
+dayjs.extend(isSameOrBefore);
 
 interface BookFormProps {
-  onBook: (data: { location: Location; from: string; to: string }) => void;
+  onBook: (data: Booking) => void;
   onClose: () => void;
 }
 
@@ -66,11 +69,13 @@ export default function BookForm({ onBook, onClose }: BookFormProps) {
   });
 
   const confirmBooking = (data: FormValues) => {
-    onBook({
-      location: parseInt(data.location),
-      from: data.from,
-      to: data.to
-    });
+    onBook(
+      new Booking(
+        parseInt(data.location),
+        dayjs(prefixTime(data.from)),
+        dayjs(prefixTime(data.to))
+      )
+    );
   };
 
   return (
