@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@mixin show-v-grid-lines($bg-color, $gap-size, $thickness, $cols, $rows) {
+  --half: 0.5 * (#{$gap-size} - #{$thickness});
+
+  background: linear-gradient(
+        to right,
+        transparent calc(100% - var(--half)),
+        darken($bg-color, 15%) #{$thickness},
+        transparent calc(100% - var(--half) + #{$thickness}) 100%
+      )
+      left top / calc((100% + #{$gap-size}) / #{$cols}) 100%,
+    linear-gradient(
+        transparent calc(100% - var(--half)),
+        darken($bg-color, 15%) #{$thickness},
+        transparent calc(100% - var(--half) + #{$thickness}) 100%
+      )
+      left top / 100% calc((100% + #{$gap-size}) / #{$rows});
+}
+
+.schedule-grid {
+  @include show-v-grid-lines(#ffffff, 1rem, 1px, 4, 8);
+  border: 1px solid darken(#ffffff, 15%);
+}

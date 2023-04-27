@@ -17,10 +17,14 @@ function App() {
       setError(undefined);
     } else
       setError(
-        `Booking at Location ${booking.location} from ${booking.from.format(
+        `Booking Location ${booking.location} from ${booking.from.format(
           "hh:mm A"
         )} to ${booking.to.format("hh:mm A")} creates a conflict`
       );
+  };
+
+  const removeBooking = (booking: Booking) => {
+    setBookings(bookings => bookings.filter(b => b !== booking));
   };
 
   return (
@@ -35,12 +39,12 @@ function App() {
       </div>
 
       {error && (
-        <p className="text-center bg-red-400 px-4 py-2 rounded text-white font-bold">
+        <p className="text-center bg-red-400 px-4 py-2 rounded text-white font-bold mb-2">
           {error}
         </p>
       )}
 
-      <Schedule bookings={bookings} />
+      <Schedule bookings={bookings} onRemove={removeBooking} />
 
       {showBookModal &&
         createPortal(
@@ -54,6 +58,11 @@ function App() {
           </div>,
           document.body
         )}
+
+      <p className="text-end text-sm italic mt-4 text-gray-400">
+        <strong>TeemCalendar</strong>. Created by{" "}
+        <strong>Kwame Opare Asiedu</strong>
+      </p>
     </div>
   );
 }
