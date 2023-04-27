@@ -2,6 +2,7 @@
   "name": "teem-interview-assessment",
   "private": true,
   "version": "1.0.0",
+  "description": "Simple booking system for Teem technical assessment",
   "author": {
     "name": "Kwame Opare Asiedu",
     "email": "asieduoparekwame@gmail.com",

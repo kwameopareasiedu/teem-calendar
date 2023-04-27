@@ -1,7 +1,7 @@
 import React from "react";
 import Booking, { findBooking, timeRange } from "../models/booking.ts";
 import Location from "../models/location.ts";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 interface ScheduleProps {
   bookings: Booking[];

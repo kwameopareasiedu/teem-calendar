@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Booking, { prefixTime, timeRange } from "../models/booking.ts";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 
 dayjs.extend(isSameOrBefore);
